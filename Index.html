@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automation ROI Calculator</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        input, button { margin: 10px; padding: 8px; }
+        .result { font-size: 20px; color: green; }
+    </style>
+</head>
+
+<body>
+
+<h2>Automation ROI Calculator</h2>
+
+<label>Manual Effort (hours/month):</label><br>
+<input type="number" id="manualHours"><br>
+
+<label>Hourly Rate ($):</label><br>
+<input type="number" id="rate"><br>
+
+<label>Automation Cost ($):</label><br>
+<input type="number" id="automationCost"><br>
+
+<button onclick="calculateROI()">Calculate ROI</button>
+
+<h3 class="result" id="output"></h3>
+
+<script>
+function calculateROI() {
+    let manualHours = document.getElementById("manualHours").value;
+    let rate = document.getElementById("rate").value;
+    let automationCost = document.getElementById("automationCost").value;
+
+    let manualCost = manualHours * rate * 12; // yearly cost
+
+    let roi = ((manualCost - automationCost) / automationCost) * 100;
+
+    document.getElementById("output").innerHTML =
+        "Manual Cost: $" + manualCost.toFixed(2) +
+        "<br>ROI: " + roi.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>
+``
